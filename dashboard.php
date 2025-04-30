@@ -8,17 +8,6 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: index.php');
     exit;
 }
-
-// Periksa apakah sesi login sudah ada
-if (!isset($_SESSION['google_id'])) {
-    // Jika belum login, arahkan ke halaman login
-    header('Location: login.php');
-    exit();
-}
-
-// Tampilkan informasi pengguna yang sudah login
-echo 'Selamat datang, ' . $_SESSION['google_name'];
-
 ?>
 
 

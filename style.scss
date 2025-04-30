@@ -213,31 +213,3 @@ $displacement:  3px;
 .register-link a:hover {
   text-decoration: underline;
 }
-
-.oauth-login {
-  text-align: center;
-  margin: 20px 0;
-}
-
-.oauth-login a {
-  display: inline-flex;
-  align-items: center;
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  text-decoration: none;
-  color: #444;
-  font-weight: 500;
-  transition: background 0.2s, box-shadow 0.2s;
-}
-
-.oauth-login a:hover {
-  background: #f5f5f5;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.google-icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-}

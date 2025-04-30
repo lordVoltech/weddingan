@@ -1,7 +1,11 @@
 <?php
 session_start();
 
-require_once 'config.php'; // atau db.php sesuai nama file kamu
+// Database connection
+$host = 'localhost'; // Your database host
+$db = 'u951570841_weddingan'; // Your database name
+$user = 'u951570841_rois'; // Your database username
+$pass = 'R01s4nw4r'; // Your database password
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);

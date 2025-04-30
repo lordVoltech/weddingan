@@ -5,13 +5,21 @@ ini_set('display_errors', 1);
 
 <?php
 
-
-
 // Start the session
 session_start();
 
-require_once 'config.php'; // atau db.php sesuai nama file kamu
+// Database connection
+$host = 'localhost'; // Your database host
+$db = 'u951570841_weddingan'; // Your database name
+$user = 'u951570841_rois'; // Your database username
+$pass = 'R01s4nw4r'; // Your database password
 
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Could not connect to the database: " . $e->getMessage());
+}
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -23,15 +31,6 @@ require 'PHPMailer/src/SMTP.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $repeatPassword = $_POST['repeat_password'];
-
-    if ($password !== $repeatPassword) {
-        $_SESSION['error_message'] = 'Password tidak cocok!';
-        $_SESSION['old_email'] = $email;
-        header('Location: register-tampil.php');
-        exit;
-    }
-
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
     $stmt = $pdo->prepare('INSERT INTO users (email, password_hash) VALUES (?, ?)');
@@ -61,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         //Recipients
-        $mail->setFrom('syamilalghani.9i@gmail.com', 'JOKO KONTOL');
+        $mail->setFrom('ryuugavariantes@gmail.com', 'JOKO KONTOL');
         $mail->addAddress($email);
 
         // Content
@@ -73,8 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['success_message'] = 'Email verification sent! Silakan cek email kamu.';
         header('Location: index.php');
     } catch (Exception $e) {
-        $_SESSION['success_message'] = 'Message could not be sent. Mailer Error: {$mail->ErrorInfo}';
-        header('Location: index.php');
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
 ?>
