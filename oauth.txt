@@ -1,0 +1,3 @@
+Secret = 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
+
+id = 468756575892-ev53i0f1hfjdg180lo82q2pr545g95ae.apps.googleusercontent.com
