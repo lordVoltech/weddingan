@@ -1,45 +1,24 @@
 <?php
 session_start();
-require_once 'config.php'; // file koneksi PDO kamu
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_token = $_POST['id_token'];
-    $client_id = '468756575892-ev53i0f1hfjdg180lo82q2pr545g95ae.apps.googleusercontent.com';
+    $client_id = '468756575892-ev53i0f1hfjdg180lo82q2pr545g95ae.apps.googleusercontent.com'; // dari Google Cloud Console
 
     $url = "https://oauth2.googleapis.com/tokeninfo?id_token=$id_token";
     $data = json_decode(file_get_contents($url), true);
 
     if ($data && isset($data['aud']) && $data['aud'] == $client_id) {
-        $email = $data['email'];
-        $name = $data['name'];
-        $google_id = $data['sub'];
-
-        // ✅ Cek apakah email sudah ada di database
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-        $stmt->execute([$email]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if (!$user) {
-            // 💾 Jika belum ada, masukkan ke database
-            $stmt = $pdo->prepare("INSERT INTO users (email, password_hash, created_at, is_verified, verify_token) VALUES (?, NULL, NOW(), 1, NULL)");
-            $stmt->execute([$email]);
-
-            // Ambil kembali data user
-            $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-            $stmt->execute([$email]);
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        }
-
-        // ✅ Simpan ke session
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['user_email'] = $user['email'];
-        $_SESSION['user_name'] = $name;
-        $_SESSION['user_role'] = 'google_user';
+        // ✅ Simpan session sesuai sistem login kamu
+        $_SESSION['user_id'] = $data['sub']; // ID unik dari Google
+        $_SESSION['user_name'] = $data['name'];
+        $_SESSION['user_email'] = $data['email'];
+        $_SESSION['user_picture'] = $data['picture']; // opsional
 
         echo json_encode([
             "success" => true,
-            "name" => $name,
-            "email" => $email
+            "name" => $data['name'],
+            "email" => $data['email']
         ]);
     } else {
         echo json_encode(["success" => false]);
