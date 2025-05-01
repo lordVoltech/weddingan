@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (!$user) {
             // Belum ada, buat user baru
-            $stmt = $pdo->prepare("INSERT INTO users (id, email, password_hash, created_at, is_verified, verify_token) VALUES (?, NULL, NOW(), 1, NULL)");
+            $stmt = $pdo->prepare("INSERT INTO users (email, password_hash, created_at, is_verified, verify_token) VALUES (?, NULL, NOW(), 1, NULL)");
             $stmt->execute([$email]);
             $user_id = $pdo->lastInsertId();
         } else {
