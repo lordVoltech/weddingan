@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'db.php'; // koneksi PDO di sini
+require_once 'config.php'; // file koneksi PDO kamu
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_token = $_POST['id_token'];
@@ -11,26 +11,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($data && isset($data['aud']) && $data['aud'] == $client_id) {
         $email = $data['email'];
-        $name  = $data['name'];
+        $name = $data['name'];
+        $google_id = $data['sub'];
 
-        // Cek apakah user sudah ada di database
+        // ✅ Cek apakah email sudah ada di database
         $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->execute([$email]);
-        $user = $stmt->fetch();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        
         if (!$user) {
-            // Belum ada, buat user baru
+            // 💾 Jika belum ada, masukkan ke database
             $stmt = $pdo->prepare("INSERT INTO users (email, password_hash, created_at, is_verified, verify_token) VALUES (?, NULL, NOW(), 1, NULL)");
             $stmt->execute([$email]);
-            $user_id = $pdo->lastInsertId();
-        } else {
-            $user_id = $user['id'];
+
+            // Ambil kembali data user
+            $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+            $stmt->execute([$email]);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
         }
 
-        // Simpan ke session
-        $_SESSION['user_id'] = $user_id;
-        $_SESSION['user_email'] = $email;
+        // ✅ Simpan ke session
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_email'] = $user['email'];
         $_SESSION['user_name'] = $name;
         $_SESSION['user_role'] = 'google_user';
 
