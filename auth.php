@@ -4,9 +4,6 @@ session_start();
 
 require 'config.php'; // atau include 'config.php';
 
-// Simpan email lama ke session biar gak ilang
-$_SESSION['old_email'] = $email;
-
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -18,6 +15,9 @@ try {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
+
+    // Simpan email lama ke session biar gak ilang
+    $_SESSION['old_email'] = $email;
 
     $stmt = $pdo->prepare('SELECT * FROM users WHERE email = ?');
     $stmt->execute([$email]);
