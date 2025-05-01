@@ -21,6 +21,9 @@ if (!isset($_SESSION['user_id'])) {
 <body>
     <h1>INI DASHBOARD NIH</h1>
     <p>Selamat datang user ID: <?php echo $_SESSION['user_id']; ?> 🥰</p>
+    <h1>Halo, <?php echo $_SESSION['user_name']; ?>!</h1>
+    <p>Email: <?php echo $_SESSION['user_email']; ?></p>
+    <img src="<?php echo $_SESSION['user_picture']; ?>" width="100">
 
     <a href="logout.php">Logout</a>
 </body>
