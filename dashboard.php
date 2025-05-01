@@ -7,10 +7,6 @@ if (!isset($_SESSION['user_id'])) {
     $_SESSION['error_message'] = 'Anda perlu login terlebih dahulu.';
     header('Location: login.php');
     exit;
-} else if (!isset($_SESSION['user_email'])) {
-    // Belum login, kembali ke halaman login
-    header("Location: login.php");
-    exit();
 }
 
 ?>
