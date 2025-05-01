@@ -1,70 +1,70 @@
 <?php
-session_start();
+  session_start();
 
-if (isset($_SESSION['error_message'])) {
-    echo '<div style="
-            background-color: #f8d7da; 
-            color: #721c24; 
-            padding: 15px 20px; 
-            border: 1px solid #f5c6cb; 
-            margin-bottom: 20px; 
-            position: fixed; 
-            top: 20px; 
-            left: 50%; 
-            transform: translateX(-50%);
-            z-index: 1000;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            min-width: 300px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          ">
-            <span style="flex-grow:1; text-align: center;">' . $_SESSION['error_message'] . '</span>
-            <span style="
-                cursor: pointer;
-                margin-left: 10px;
-                font-weight: bold;
-                color: #721c24;
-                font-size: 18px;
-            " onclick="this.parentElement.style.display=\'none\'">&times;</span>
-          </div>';
-    unset($_SESSION['error_message']);
-}
+  if (isset($_SESSION['error_message'])) {
+      echo '<div style="
+              background-color: #f8d7da; 
+              color: #721c24; 
+              padding: 15px 20px; 
+              border: 1px solid #f5c6cb; 
+              margin-bottom: 20px; 
+              position: fixed; 
+              top: 20px; 
+              left: 50%; 
+              transform: translateX(-50%);
+              z-index: 1000;
+              border-radius: 8px;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+              min-width: 300px;
+              text-align: center;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            ">
+              <span style="flex-grow:1; text-align: center;">' . $_SESSION['error_message'] . '</span>
+              <span style="
+                  cursor: pointer;
+                  margin-left: 10px;
+                  font-weight: bold;
+                  color: #721c24;
+                  font-size: 18px;
+              " onclick="this.parentElement.style.display=\'none\'">&times;</span>
+            </div>';
+      unset($_SESSION['error_message']);
+  }
 
-if (isset($_SESSION['success_message'])) {
-    echo '<div style="
-            background-color: #d4edda;
-            color: #155724;
-            padding: 10px 20px;
-            border: 1px solid #c3e6cb;
-            margin-bottom: 20px;
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            min-width: 300px;
-            text-align: center;
-          ">
-            <span>' . $_SESSION['success_message'] . '</span>
-            <span style="
-                position: absolute;
-                top: 5px;
-                right: 10px;
-                background: none;
-                border: none;
-                font-weight: bold;
-                color: #155724;
-                font-size: 16px;
-                cursor: pointer;" 
-                onclick="this.parentElement.style.display=\'none\'">×</span>
-          </div>';
-    unset($_SESSION['success_message']);
-}
+  if (isset($_SESSION['success_message'])) {
+      echo '<div style="
+              background-color: #d4edda;
+              color: #155724;
+              padding: 10px 20px;
+              border: 1px solid #c3e6cb;
+              margin-bottom: 20px;
+              position: fixed;
+              top: 20px;
+              left: 50%;
+              transform: translateX(-50%);
+              z-index: 1000;
+              border-radius: 8px;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+              min-width: 300px;
+              text-align: center;
+            ">
+              <span>' . $_SESSION['success_message'] . '</span>
+              <span style="
+                  position: absolute;
+                  top: 5px;
+                  right: 10px;
+                  background: none;
+                  border: none;
+                  font-weight: bold;
+                  color: #155724;
+                  font-size: 16px;
+                  cursor: pointer;" 
+                  onclick="this.parentElement.style.display=\'none\'">×</span>
+            </div>';
+      unset($_SESSION['success_message']);
+  }
 ?>
 
 
@@ -77,6 +77,7 @@ if (isset($_SESSION['success_message'])) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <!-- <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -131,6 +132,19 @@ if (isset($_SESSION['success_message'])) {
         
       </div>
       <button type="submit">Log in</button>
+      <div id="g_id_onload"
+        data-client_id="468756575892-ev53i0f1hfjdg180lo82q2pr545g95ae.apps.googleusercontent.com"
+        data-login_uri="https://mediumslateblue-snail-933847.hostingersite.com/google-callback.php"
+        data-auto_prompt="false">
+      </div>
+
+      <div class="g_id_signin"
+          data-type="standard"
+          data-shape="pill"
+          data-theme="outline"
+          data-text="sign_in_with"
+          data-size="large">
+      </div>
       <!-- Tambahan yang kamu mau -->
       <p class="register-link">
         Don't have an account? <a href="register.html">Register</a>
