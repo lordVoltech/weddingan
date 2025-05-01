@@ -78,6 +78,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <!-- <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -132,9 +133,11 @@
         
       </div>
       <button type="submit">Log in</button>
+
+      <!-- lgoin google -->
       <div id="g_id_onload"
         data-client_id="468756575892-ev53i0f1hfjdg180lo82q2pr545g95ae.apps.googleusercontent.com"
-        data-login_uri="https://mediumslateblue-snail-933847.hostingersite.com/google-callback.php"
+        data-callback="handleCredentialResponse"
         data-auto_prompt="false">
       </div>
 
@@ -145,6 +148,29 @@
           data-text="sign_in_with"
           data-size="large">
       </div>
+      <script>
+        function handleCredentialResponse(response) {
+            // Kirim token ke PHP untuk verifikasi
+            fetch("validate_token.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: "id_token=" + response.credential
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = "dashboard.php";
+                } else {
+                    alert("Login gagal.");
+                }
+            });
+        }
+        </script>
+        <!-- akhir lgoin google -->
+
+
       <!-- Tambahan yang kamu mau -->
       <p class="register-link">
         Don't have an account? <a href="register.html">Register</a>

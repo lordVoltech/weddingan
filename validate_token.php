@@ -1,27 +1,19 @@
 <?php
-// Tambahkan header ini di atas file PHP
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
-header("Cross-Origin-Opener-Policy: same-origin");
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id_token = $_POST['id_token'];
 
-if (isset($_POST['idtoken'])) {
-    $idToken = $_POST['idtoken'];
+    $CLIENT_ID = 'YOUR_CLIENT_ID'; // dari Google Cloud Console
 
-    // Gunakan Google API Client Library untuk memverifikasi ID token
-    require_once 'vendor/autoload.php';  // Pastikan kamu sudah install Google Client Library
+    $url = "https://oauth2.googleapis.com/tokeninfo?id_token=$id_token";
+    $data = json_decode(file_get_contents($url), true);
 
-    $client = new Google_Client(['client_id' => '468756575892-ev53i0f1hfjdg180lo82q2pr545g95ae.apps.googleusercontent.com']);  // Ganti dengan Client ID-mu
-    $payload = $client->verifyIdToken($idToken);
-
-    if ($payload) {
-        // Token valid
-        $userId = $payload['sub'];
-        echo "success: User ID: " . $userId;
+    if ($data && isset($data['aud']) && $data['aud'] == $CLIENT_ID) {
+        session_start();
+        $_SESSION['user_email'] = $data['email'];
+        $_SESSION['user_name'] = $data['name'];
+        echo json_encode(["success" => true]);
     } else {
-        echo "error: Invalid ID token";
+        echo json_encode(["success" => false]);
     }
-} else {
-    echo "No ID token received";
 }
 ?>
