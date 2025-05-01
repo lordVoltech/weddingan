@@ -3,7 +3,7 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_token = $_POST['id_token'];
 
-    $CLIENT_ID = 'YOUR_CLIENT_ID'; // dari Google Cloud Console
+    $CLIENT_ID = '468756575892-ev53i0f1hfjdg180lo82q2pr545g95ae.apps.googleusercontent.com'; // dari Google Cloud Console
 
     $url = "https://oauth2.googleapis.com/tokeninfo?id_token=$id_token";
     $data = json_decode(file_get_contents($url), true);
