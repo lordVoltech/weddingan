@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'config.php'; // koneksi PDO di sini
+require_once 'db.php'; // koneksi PDO di sini
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_token = $_POST['id_token'];
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (!$user) {
             // Belum ada, buat user baru
-            $stmt = $pdo->prepare("INSERT INTO users (email, password_hash, created_at, is_verified, verify_token) VALUES (?, NULL, NOW(), 1, NULL)");
+            $stmt = $pdo->prepare("INSERT INTO users (email, password, created_at, is_verified, verify_token) VALUES (?, NULL, NOW(), 1, NULL)");
             $stmt->execute([$email]);
             $user_id = $pdo->lastInsertId();
         } else {
