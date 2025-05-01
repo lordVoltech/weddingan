@@ -5,7 +5,7 @@ session_start();
 if (!isset($_SESSION['user_id'])) {
     // Buat notif di session
     $_SESSION['error_message'] = 'Anda perlu login terlebih dahulu.';
-    header('Location: index.php');
+    header('Location: login.php');
     exit;
 }
 ?>

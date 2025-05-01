@@ -2,6 +2,6 @@
 session_start();
 session_unset(); // hapus semua session
 session_destroy(); // hancurkan session
-header('Location: index.php'); // balik ke login
+header('Location: login.php'); // balik ke login
 exit;
 ?>

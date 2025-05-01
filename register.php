@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $mail->send();
         $_SESSION['success_message'] = 'Email verification sent! Silakan cek email kamu.';
-        header('Location: index.php');
+        header('Location: login.php');
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }

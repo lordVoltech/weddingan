@@ -118,7 +118,7 @@ if (isset($_SESSION['success_message'])) {
       <button type="submit">Register</button>
 
       <p class="register-link">
-        Already have an account? <a href="index.php">Log in</a>
+        Already have an account? <a href="login.php">Log in</a>
       </p>
     </form>
   </div>

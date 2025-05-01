@@ -50,7 +50,7 @@
 <div class="card">
     <h1>Verifikasi Berhasil!</h1>
     <p>Akun kamu sudah diverifikasi. Silakan login sekarang.</p>
-    <a href="index.php">Login Sekarang</a>
+    <a href="login.php">Login Sekarang</a>
 </div>
 
 </body>
