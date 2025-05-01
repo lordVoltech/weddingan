@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'components/roles.php';
+require_once 'roles.php';
 
 // Check if user is not logged in
 if(!isset($_SESSION['user_id'])) {
@@ -11,9 +11,9 @@ if(!isset($_SESSION['user_id'])) {
 // Check if user has permission to view dashboard
 checkPermission('dashboard', 'view');
 
-require_once 'components/config.php';
-require_once 'components/header.php';
-require_once 'components/sidebar.php';
+require_once 'config.php';
+require_once 'header.php';
+require_once 'sidebar.php';
 
 // Get user statistics
 $stats = getUserStats($pdo);
