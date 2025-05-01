@@ -8,11 +8,7 @@ ini_set('display_errors', 1);
 // Start the session
 session_start();
 
-// Database connection
-$host = 'localhost'; // Your database host
-$db = 'u951570841_weddingan'; // Your database name
-$user = 'u951570841_rois'; // Your database username
-$pass = 'R01s4nw4r'; // Your database password
+require 'config.php'; // atau include 'config.php';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
@@ -32,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirmPassword = $_POST['repeat_password'];
-    
+
     // Simpan email lama ke session biar gak ilang
     $_SESSION['old_email'] = $email;
 

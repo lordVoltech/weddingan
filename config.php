@@ -1,10 +1,11 @@
 <?php
 session_start();
 
+// Database connection
 $host = 'localhost'; // Your database host
-$db = 'weddingan'; // Your database name
-$user = 'root'; // Your database username
-$pass = ''; // Your database password
+$db = 'u951570841_weddingan'; // Your database name
+$user = 'u951570841_rois'; // Your database username
+$pass = 'R01s4nw4r'; // Your database password
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
