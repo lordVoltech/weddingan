@@ -31,6 +31,13 @@ require 'PHPMailer/src/SMTP.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $confirmPassword = $_POST['repeat_password'];
+
+if ($password !== $confirmPassword) {
+    $_SESSION['error_message'] = 'Password dan konfirmasi tidak cocok.';
+    header('Location: register-tampil.php');
+    exit();
+}
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
     $stmt = $pdo->prepare('INSERT INTO users (email, password_hash) VALUES (?, ?)');

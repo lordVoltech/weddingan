@@ -174,7 +174,7 @@
 
       <!-- Tambahan yang kamu mau -->
       <p class="register-link">
-        Don't have an account? <a href="register.html">Register</a>
+        Don't have an account? <a href="register-tampil.php">Register</a>
       </p>
 
       <a href="https://codepen.io/elujambio/pen/yjwzGP" class="discrete" target="_blank">Basic version</a>
