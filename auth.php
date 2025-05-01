@@ -15,9 +15,7 @@ try {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
-
-    // Simpan email lama ke session biar gak ilang
-    $_SESSION['old_email'] = $email;
+    $_SESSION['user_id'] = $email;
 
     $stmt = $pdo->prepare('SELECT * FROM users WHERE email = ?');
     $stmt->execute([$email]);
