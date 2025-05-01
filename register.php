@@ -32,6 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirmPassword = $_POST['repeat_password'];
+    
+    // Simpan email lama ke session biar gak ilang
+    $_SESSION['old_email'] = $email;
 
 if ($password !== $confirmPassword) {
     $_SESSION['error_message'] = 'Password dan konfirmasi tidak cocok.';
