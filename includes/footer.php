@@ -1,0 +1,1 @@
+syamil nii gimana cok hadeh apalah nii
