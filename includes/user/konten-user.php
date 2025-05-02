@@ -48,7 +48,7 @@
                                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white mt-1"><?php echo number_format($stats['new_users']); ?></h3>
                             </div>
                             <div class="p-3 bg-purple-500 bg-opacity-10 rounded-full">
-                                <i class="fas fa-user-plus text-xl text-purple-500"></i>
+                                <i class="fas fa-document-plus text-xl text-purple-500"></i>
                             </div>
                         </div>
                         <div class="mt-4 flex items-center text-sm">
@@ -86,7 +86,7 @@
                     <!-- User Activity Chart -->
                     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
                         <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">User Activity</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">performa undangan</h3>
                             <div class="flex items-center space-x-2">
                                 <button class="px-3 py-1 text-sm bg-blue-100 text-blue-600 rounded-full dark:bg-blue-900 dark:text-blue-300">Weekly</button>
                                 <button class="px-3 py-1 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">Monthly</button>
