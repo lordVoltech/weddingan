@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (!$user) {
             // 🔐 Masukkan user baru
-            $stmt = $pdo->prepare("INSERT INTO users (id, email, password_hash, created_at, is_verified, verify_token) VALUES ('',?, ?, NOW(), 1, NULL)");
+            $stmt = $pdo->prepare("INSERT INTO users (email, password_hash, created_at, is_verified, verify_token) VALUES (?, ?, NOW(), 1, NULL)");
             $fakePassword = password_hash($google_id, PASSWORD_DEFAULT); // hash ID Google sebagai dummy password
             $stmt->execute([$email, $fakePassword]);
 
