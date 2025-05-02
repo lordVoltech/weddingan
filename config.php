@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 // Database connection
 $host = 'localhost'; // Your database host
 $db = 'u951570841_weddingan'; // Your database name

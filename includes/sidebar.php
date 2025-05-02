@@ -1,5 +1,4 @@
 <?php
-require_once 'roles.php';
 $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 <!-- Sidebar -->
@@ -10,11 +9,11 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <!-- Profile Section -->
             <div class="flex flex-col items-center space-y-3 mb-6 -mt-2">
                 <img class="h-16 w-16 rounded-full object-cover ring-2 ring-blue-500 dark:ring-blue-400 p-1" 
-                     src="https://ui-avatars.com/api/?name=Admin+User&background=random" 
+                     src="https://ui-avatars.com/api/?name=<?php echo urlencode($_SESSION['user_email']); ?>&background=random" 
                      alt="Profile">
                 <div class="text-center">
                     <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Welcome,</p>
-                    <p class="text-base font-bold text-gray-900 dark:text-white">Admin User</p>
+                    <p class="text-base font-bold text-gray-900 dark:text-white"><?php echo htmlspecialchars($_SESSION['user_email']); ?></p>
                 </div>
             </div>
 
@@ -24,36 +23,28 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <!-- Navigation Menu -->
             <nav class="space-y-2">
                 <!-- Dashboard -->
-                <?php if (hasPermission($_SESSION['user_role'], 'dashboard')): ?>
-                <a href="index.php" class="<?php echo $current_page == 'index.php' ? 'bg-blue-50 dark:bg-blue-900 text-blue-600 dark:text-blue-300' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'; ?> group flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ease-in-out">
+                <a href="dashboard.php" class="<?php echo $current_page == 'dashboard.php' ? 'bg-blue-50 dark:bg-blue-900 text-blue-600 dark:text-blue-300' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'; ?> group flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ease-in-out">
                     <i class="fas fa-home w-5 h-5 mr-3 transition-transform duration-200 group-hover:scale-110"></i>
                     <span class="transition-colors duration-200">Dashboard</span>
                 </a>
-                <?php endif; ?>
 
-                <!-- Users -->
-                <?php if (hasPermission($_SESSION['user_role'], 'users', 'view')): ?>
-                <a href="users.php" class="<?php echo $current_page == 'users.php' ? 'bg-blue-50 dark:bg-blue-900 text-blue-600 dark:text-blue-300' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'; ?> group flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ease-in-out">
+                <!-- Create Invitation -->
+                <a href="#" class="text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 group flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ease-in-out">
+                    <i class="fas fa-envelope w-5 h-5 mr-3 transition-transform duration-200 group-hover:scale-110"></i>
+                    <span class="transition-colors duration-200">Create Invitation</span>
+                </a>
+
+                <!-- Manage Guests -->
+                <a href="#" class="text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 group flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ease-in-out">
                     <i class="fas fa-users w-5 h-5 mr-3 transition-transform duration-200 group-hover:scale-110"></i>
-                    <span class="transition-colors duration-200">Users</span>
+                    <span class="transition-colors duration-200">Manage Guests</span>
                 </a>
-                <?php endif; ?>
 
-                <!-- User Activity -->
-                <?php if (hasPermission($_SESSION['user_role'], 'activity', 'view')): ?>
-                <a href="activity.php" class="<?php echo $current_page == 'activity.php' ? 'bg-blue-50 dark:bg-blue-900 text-blue-600 dark:text-blue-300' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'; ?> group flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ease-in-out">
-                    <i class="fas fa-chart-line w-5 h-5 mr-3 transition-transform duration-200 group-hover:scale-110"></i>
-                    <span class="transition-colors duration-200">Activity</span>
+                <!-- Digital Gifts -->
+                <a href="#" class="text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 group flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ease-in-out">
+                    <i class="fas fa-gift w-5 h-5 mr-3 transition-transform duration-200 group-hover:scale-110"></i>
+                    <span class="transition-colors duration-200">Digital Gifts</span>
                 </a>
-                <?php endif; ?>
-
-                <!-- Settings -->
-                <?php if (hasPermission($_SESSION['user_role'], 'settings', 'view')): ?>
-                <a href="settings.php" class="<?php echo $current_page == 'settings.php' ? 'bg-blue-50 dark:bg-blue-900 text-blue-600 dark:text-blue-300' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'; ?> group flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ease-in-out">
-                    <i class="fas fa-cog w-5 h-5 mr-3 transition-transform duration-200 group-hover:scale-110"></i>
-                    <span class="transition-colors duration-200">Settings</span>
-                </a>
-                <?php endif; ?>
             </nav>
         </div>
 

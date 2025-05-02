@@ -2,7 +2,7 @@
 // Start the session
 session_start();
 
-require 'config.php'; // atau include 'config.php';
+require 'config.php';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
@@ -24,18 +24,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user && password_verify($password, $user['password_hash'])) {
         if ($user['is_verified'] == 1) {
             $_SESSION['user_id'] = $user['id'];
-            $_SESSION['user_role'] = $user['role'];
             $_SESSION['user_email'] = $email;
-
-
             header('Location: dashboard.php');
             exit;
         } else {
-            $_SESSION['error_message'] = 'verivikasi dulu mas.';
-            header('Location: login.php');        
+            $_SESSION['error_message'] = 'Please verify your email first.';
+            header('Location: login.php');
+            exit;
         }
     } else {
-        $_SESSION['error_message'] = 'Email atau Pw salah rek.';
-        header('Location: login.php');    }
+        $_SESSION['error_message'] = 'Invalid email or password.';
+        header('Location: login.php');
+        exit;
+    }
 }
 ?>
