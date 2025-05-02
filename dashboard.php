@@ -12,8 +12,8 @@ if(!isset($_SESSION['user_id'])) {
 checkPermission('dashboard', 'view');
 
 require_once 'config.php';
-require_once 'header.php';
-require_once 'sidebar.php';
+require_once 'inlcudes/header.php';
+require_once 'includes/sidebar.php';
 
 // Get user statistics
 $stats = getUserStats($pdo);
