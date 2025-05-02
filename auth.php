@@ -24,7 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user && password_verify($password, $user['password_hash'])) {
         if ($user['is_verified'] == 1) {
             $_SESSION['user_id'] = $user['id'];
-            $_SESSION['user_role'] = $user['role'];
+            $_SESSION['user_role'] = $user[$email]['role'];
+            $_SESSION['user_email'] = $email;
+
+
             header('Location: dashboard.php');
             exit;
         } else {
