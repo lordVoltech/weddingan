@@ -4,7 +4,7 @@
                     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 transition-transform duration-200 hover:scale-105">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Total Users</p>
+                                <p class="text-sm font-medium text-gray-600 dark:text-gray-400">total Pengunjung</p>
                                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white mt-1"><?php echo number_format($stats['total_users']); ?></h3>
                             </div>
                             <div class="p-3 bg-blue-500 bg-opacity-10 rounded-full">
@@ -24,7 +24,7 @@
                     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 transition-transform duration-200 hover:scale-105">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Active Users</p>
+                                <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Undangan Aktif</p>
                                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white mt-1"><?php echo number_format($stats['active_users']); ?></h3>
                             </div>
                             <div class="p-3 bg-green-500 bg-opacity-10 rounded-full">
@@ -36,7 +36,7 @@
                                 <i class="fas fa-arrow-up mr-1 text-xs"></i>
                                 8%
                             </span>
-                            <span class="text-gray-600 dark:text-gray-400 ml-2">from yesterday</span>
+                            <span class="text-gray-600 dark:text-gray-400 ml-2">from last week</span>
                         </div>
                     </div>
 
@@ -44,7 +44,7 @@
                     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 transition-transform duration-200 hover:scale-105">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm font-medium text-gray-600 dark:text-gray-400">New Users Today</p>
+                                <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Undangan baru </p>
                                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white mt-1"><?php echo number_format($stats['new_users']); ?></h3>
                             </div>
                             <div class="p-3 bg-purple-500 bg-opacity-10 rounded-full">
@@ -64,7 +64,7 @@
                     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 transition-transform duration-200 hover:scale-105">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Online Users</p>
+                                <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Undangan Kamu</p>
                                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white mt-1"><?php echo number_format($stats['online_users']); ?></h3>
                             </div>
                             <div class="p-3 bg-yellow-500 bg-opacity-10 rounded-full">
