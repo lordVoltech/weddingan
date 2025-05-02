@@ -1,5 +1,8 @@
 <?php
 $current_page = basename($_SERVER['PHP_SELF']);
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
 ?>
 <!-- Sidebar -->
 <aside id="sidebar" class="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 w-[85%] max-w-[320px] md:w-72 h-[calc(100vh-4rem)] fixed left-0 top-16 transform -translate-x-full md:translate-x-0 transition-all duration-300 ease-in-out shadow-lg z-40 overflow-y-auto">
