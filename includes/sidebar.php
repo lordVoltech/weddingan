@@ -1,8 +1,6 @@
 <?php
 $current_page = basename($_SERVER['PHP_SELF']);
-echo '<pre>';
-print_r($_SESSION);
-echo '</pre>';
+
 ?>
 <!-- Sidebar -->
 <aside id="sidebar" class="bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 w-[85%] max-w-[320px] md:w-72 h-[calc(100vh-4rem)] fixed left-0 top-16 transform -translate-x-full md:translate-x-0 transition-all duration-300 ease-in-out shadow-lg z-40 overflow-y-auto">
@@ -27,7 +25,10 @@ echo '</pre>';
             <div class="border-t border-gray-200 dark:border-gray-700 mb-6"></div>
 
             <!-- Navigation Menu -->
-            <?php if(isset($_SESSION['user_role']) == 'admin') : ?>
+            <?php echo '<pre>';
+                print_r($_SESSION);
+                echo '</pre>';
+                if(isset($_SESSION['user_role']) == 'admin') : ?>
                 <nav class="space-y-1.5">
                     <!-- Dashboard -->
                     <a href="dashboard.php" class="<?php echo $current_page == 'dashboard.php' ? 'bg-blue-50/80 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50/80 dark:hover:bg-gray-700/50'; ?> group flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ease-in-out hover:scale-[1.02]">
@@ -53,8 +54,8 @@ echo '</pre>';
                         <span class="transition-colors duration-200">Settings</span>
                     </a>
                 </nav>
-
-            <?php elseif (isset($_SESSION['user_role']) == 'user') : ?>
+            <?php endif; ?>
+            <?php if (isset($_SESSION['user_role']) == 'user') : ?>
                 <nav class="space-y-1.5">
                     <!-- Dashboard -->
                     <a href="dashboard.php" class="<?php echo $current_page == 'dashboard.php' ? 'bg-blue-50/80 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50/80 dark:hover:bg-gray-700/50'; ?> group flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ease-in-out hover:scale-[1.02]">
