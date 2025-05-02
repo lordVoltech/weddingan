@@ -11,6 +11,12 @@ if (isset($_SESSION['success_message'])) {
     unset($_SESSION['success_message']);
 }
 
+if (isset($_SESSION['user_id'])) {
+    // Sudah login, langsung arahkan ke dashboard
+    header('Location: dashboard.php');
+    exit;
+}
+
 $emailValue = isset($_SESSION['old_email']) ? $_SESSION['old_email'] : '';
 unset($_SESSION['old_email']); 
 ?>
