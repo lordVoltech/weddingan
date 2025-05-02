@@ -1,5 +1,4 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                    <?php if($_SESSION[user_role] === 'admin') : ?>
                                 
                     <!-- Total Users Card -->
                     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 transition-transform duration-200 hover:scale-105">
@@ -80,7 +79,6 @@
                             <span class="text-gray-600 dark:text-gray-400 ml-2">updating every minute</span>
                         </div>
                     </div>
-                    <?php endif; ?>
                 </div>
 
                 <!-- Charts Section -->
