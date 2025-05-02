@@ -48,7 +48,7 @@
                                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white mt-1"><?php echo number_format($stats['new_users']); ?></h3>
                             </div>
                             <div class="p-3 bg-purple-500 bg-opacity-10 rounded-full">
-                                <i class="fas fa-file-circle-plus text-xl text-purple-500"></i>
+                                <i class="fa-solid fa-file-circle-plus text-xl text-purple-500"></i>
                             </div>
                         </div>
                         <div class="mt-4 flex items-center text-sm">
@@ -68,7 +68,7 @@
                                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white mt-1"><?php echo number_format($stats['online_users']); ?></h3>
                             </div>
                             <div class="p-3 bg-yellow-500 bg-opacity-10 rounded-full">
-                                <i class="fas fa-file-circle-check text-xl text-yellow-500"></i>
+                                <i class="fa-solid fa-file-circle-check text-xl text-yellow-500"></i>
                             </div>
                         </div>
                         <div class="mt-4 flex items-center text-sm">
