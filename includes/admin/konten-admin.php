@@ -80,7 +80,7 @@
                             <span class="text-gray-600 dark:text-gray-400 ml-2">updating every minute</span>
                         </div>
                     </div>
-                    <? endif; ?>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Charts Section -->
