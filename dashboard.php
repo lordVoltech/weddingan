@@ -110,8 +110,6 @@ $recentUsers = [];
                     } else {
                         echo "<p class='text-red-500'>Konten untuk role ini belum tersedia.</p>";
                     }
-                    
-            require_once 'includes/footer.php';
                 ?>
 
                 
