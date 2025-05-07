@@ -11,7 +11,6 @@ require_once 'config.php';
 require_once 'includes/header.php';
 require_once 'includes/sidebar.php';
 
-
 // Initialize empty stats
 $stats = [
     'total_users' => 0,
@@ -102,7 +101,7 @@ $recentUsers = [];
                 <?php $role = $_SESSION['user_role'];
                 
                     $konten_file = "includes/{$role}/konten-{$role}.php";
-                    
+                    echo "<pre>Path dicoba: $konten_file</pre>";
 
 
                     if (file_exists($konten_file)) {
@@ -118,9 +117,12 @@ $recentUsers = [];
     </div>
 </div>
 
-<!-- Alpine.js and Chart.js -->
+<?php
+require_once 'includes/footer.php';  // Menambahkan footer
+?>
+
+<!-- Alpine.js -->
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <!-- Initialize Alpine.js -->
 <script>
