@@ -10,6 +10,7 @@ if(!isset($_SESSION['user_id'])) {
 require_once 'config.php';
 require_once 'includes/header.php';
 require_once 'includes/sidebar.php';
+require_once 'includes/footer.php';
 
 // Initialize empty stats
 $stats = [
